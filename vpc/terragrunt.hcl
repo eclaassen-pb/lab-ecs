@@ -21,11 +21,11 @@ EOF
 # Indicate the input values to use for the variables of the module.
 inputs = {
   name = "eclaassen-lab-vpc"
-  cidr = "10.100.0.0/16"
+  cidr = "10.101.0.0/16"
 
   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
-  private_subnets = ["10.100.1.0/24", "10.100.2.0/24", "10.100.3.0/24"]
-  public_subnets  = ["10.100.101.0/24", "10.100.102.0/24", "10.100.103.0/24"]
+  private_subnets = ["10.101.1.0/24", "10.101.2.0/24", "10.101.3.0/24"]
+  public_subnets  = ["10.101.101.0/24", "10.101.102.0/24", "10.101.103.0/24"]
 
   enable_nat_gateway = true
   enable_vpn_gateway = false

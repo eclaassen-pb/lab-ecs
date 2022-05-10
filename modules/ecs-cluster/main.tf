@@ -44,8 +44,8 @@ resource "aws_iam_role_policy" "ecs_policy" {
   policy = file("ecs-ec2-policy.json")
 }
 
-  resource "aws_iam_instance_profile" "ecs_ec2_profile" {
-  name = "${var.ecs_naming_prefix}-ecs-ec2-profile"
+  resource "aws_iam_instance_profile" "ecs_ec2_instance_profile" {
+  name = "${var.ecs_naming_prefix}-ecs-ec2-isntance-profile"
   role = aws_iam_role.ecs_ec2_role.name
 }
 

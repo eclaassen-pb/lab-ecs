@@ -4,7 +4,7 @@
 # Note the extra `/` after the protocol is required for the shorthand
 # notation.
 terraform {
-  source = "../modules/ecs"
+  source = "../modules/asg"
 }
 
 # Indicate what region to deploy the resources into
@@ -18,11 +18,18 @@ provider "aws" {
 EOF
 }
 
+dependency "vpc" {
+  config_path = "../vpc"
+
+  mock_outputs = {
+    private_subnets = ["subnet-id"]
+    vpc_id = "vpc-id"
+  }
+}
+
 # Indicate the input values to use for the variables of the module.
 inputs = {
-  ecs_naming_prefix = "eclaassen-lab-ecs"
-  eca_vpc_id = 
-  ecs_ingress_cidrs = ["174.16.209.15/32"]
-  ecs_ec2_key_name = "eclaassen"
-  ecs_ec2_ami = "ami-0686851c4e7b1a8e1"
+  ecs_naming_prefix = "eclaassen-lab"
+  eca_vpc_id = dependency.asg.
+  asg_ingress_cidrs = ["174.16.209.15/32"]
 }
